@@ -2,28 +2,43 @@
 # Provider specific Inputs
 #############################
 
-# Monitor
-monitor_entrypoint: "193.144.35.146"
-
-# Job prefix name
-job_prefix: "coegss_"
-
-# HLRS Laki cluster configuration
-coegss_hlrs_laki:
-    credentials:
-        host: "cl3fr2.hww.de"
-        user: ""
-        password: ""
-        login_shell: true
+half_similarity: "5000"                    
+damping: "0"                               
+stripe_size: "0.1"                         
+                                           
+###########################################
+# Details of the application lifecycle     
+###########################################
+python_module: '~/opt/pyenv/eagle.man.pozna
+eopen_cloudify_repository_clone: '~/eopen-cloudify'   
+                                           
+num_processes: "4"                         
+job_prefix: "eopen_network_reconstruction_"
+                                           
+# Job monitoring                           
+monitor_entrypoint: "EXTERNAL_MONITOR_IP"  
+                                           
+# CKAN                                     
+eopen_hlrs_datacatalogue_key: " "
+eopen_input_dataset:     ' '
+eopen_output_dataset:    ' '
+                                           
+###########################################
+# Cluster configurations and credentials   
+###########################################         
+                                           
+# HLRS Gilgamesch cluster configuration   
+eopen_hlrs_gilgamesch:          
+    credentials:               
+        host: "gilgamesch-login1.hlrs.de"
+        user: "USERNAME"       
+        private_key: |         
+          -----BEGIN RSA PRIVAT
+          -----END RSA PRIVATE 
+        private_key_password: " "
+        password: "PASSWORD"   
+        login_shell: true      
     country_tz: "Europe/Stuttgart"
-    workload_manager: "TORQUE"
-
-# PSNC Eagle cluster configuration
-coegss_psnc_eagle:
-    credentials:
-        host: "eagle.man.poznan.pl"
-        user: ""
-        password: ""
-        login_shell: false
-    country_tz: "Europe/Posnan"
-    workload_manager: "SLURM"
+    workload_manager: "MESOS" 
+                               
+      
